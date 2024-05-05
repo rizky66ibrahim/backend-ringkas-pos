@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, HasRoles, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +26,11 @@ class User extends Authenticatable
         'email',
         'phone_number',
         'profile_picture',
+        'address',
         'status',
         'password',
+        'otp_code',
+        'otp_created_at',
     ];
 
     /**

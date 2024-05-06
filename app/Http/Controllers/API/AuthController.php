@@ -26,7 +26,7 @@ class AuthController extends BaseController
                 'password' => 'required|string|min:8|confirmed',
                 'phone_number' => 'required|string|unique:users',
                 'address' => 'nullable|string',
-                'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
             // Check Validation
@@ -34,7 +34,7 @@ class AuthController extends BaseController
                 return $this->sendError('Validation Error.', $validator->errors());
             }
 
-            // Upload Profile Picture
+            // Generate Profile Picture
             $profile_picture = $this->uploadProfilePicture($request);
 
             // Normalize Phone Number
